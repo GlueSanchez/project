@@ -1,6 +1,6 @@
 'use strict';
 
-const numberOfFilms = +prompt('How much films do you see?', '');
+const numberOfFilms = prompt('How much films do you see?', '');
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -10,12 +10,30 @@ const personalMovieDB = {
     privat: false,
 };
 
-const a = prompt('Last film?', ''),
-      b = prompt('Mark', ''),
-      c = prompt('Last film', ''),
-      d = prompt('Mark', '');
+for (let i = 0; i < numberOfFilms; i++) {
+    if (i >= 5) {
+        break;
+    }
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+    const a = prompt('Last film?', ''),
+        b = prompt('Mark', '');
+
+    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+    } else {
+        i--;
+    }
+}
+
+
+if (personalMovieDB.count < 3) {
+    alert('Low level');
+} else if (personalMovieDB.count >= 3 && personalMovieDB.count < 5) {
+    alert("Middle level");
+} else if (personalMovieDB >= 7) {
+    alert("Top level");
+} else {
+    console.log("Error");
+}
 
 console.log(personalMovieDB);
